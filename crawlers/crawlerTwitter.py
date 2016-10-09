@@ -13,7 +13,7 @@ def crawlTweets(hashtag,dateD,dateF,filename):
 	tweets = search['statuses']
 	jsonParse = ""
 	for tweet in tweets:
-		jsonParse = jsonParse +  json.dumps(tweet, sort_keys=True, indent=4)
+		jsonParse = jsonParse +  json.dumps(tweet) + "\n"
 	fptr = open('json/'+filename, "w")
 	fptr.write(jsonParse)
 	fptr.close()
