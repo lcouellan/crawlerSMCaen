@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# -*-coding:utf-8 -*
 
 #crawl calendrier sm caen
 #page crawlé: http://www.smcaen.fr/calendrier-resultat/2016-2017/premiere/complet
