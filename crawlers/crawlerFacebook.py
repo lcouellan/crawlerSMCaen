@@ -25,7 +25,7 @@ def crawlFacebook(page_id,start_parsing_date,end_parsing_date,filename):
         del comments["reactions"]["paging"]
             
     #print(page)
-    jsonParse = json.dumps(page, sort_keys=True, indent=4)
+    jsonParse = json.dumps(page) + "\n"
     fptr = open('json/'+filename, "w")
     fptr.write(jsonParse)
     fptr.close()
