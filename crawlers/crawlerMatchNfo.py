@@ -145,8 +145,9 @@ def crawlMatchDate(filename):
                 date_match = year + ":" + real_month + ":" + day
                 date_start_crawling = year + ":" + real_month + ":" + str(int(day) - 1) + " 04:00:00"
                 date_stop_crawling = year + ":" + real_month + ":" + str(int(day) + 1) + " 23:59:59"
+                date_start_cron = year + ":" + real_month + ":" + str(int(day) + 2)
                 
-                line_to_write += date_match + " - " + hashtag + " - " + date_start_crawling + " - " + date_stop_crawling + "\n"
+                line_to_write += date_match + " - " + hashtag + " - " + date_start_crawling + " - " + date_stop_crawling + " - " + date_start_cron + "\n"
 
     #on stock le tout dans un fichier:
     fptr = open('json/'+filename, "w")

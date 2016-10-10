@@ -1,22 +1,55 @@
 #!/usr/bin/python3
 # -*-coding:utf-8 -*
 
+import time
+import processCrawlers
 import sys
 sys.path.insert(0, 'crawlers')
-sys.path.insert(0, 'db')
-sys.path.insert(0, 'config')
-import config
-import crawlerTwitter
-import crawlerFacebook
 import crawlerMatchNfo
-import db
-import shutil
-import time
+import urllib
 
-print (time.strftime("%Y:%m:%d"))
-crawlerTwitter.crawlTweets('#SMCaen','2016-10-01','2016-10-03','data_twitter.json')
-crawlerFacebook.crawlFacebook('SMCaen.officiel','2016:09:16 08:00:00','2016:09:17 23:59:59','data_facebook.json')
+
+date_jour = time.strftime("%Y:%m:%d")
 crawlerMatchNfo.crawlMatchDate('matchNfo.txt')
-db.insertDB(config.MONGO_DB,"tweets","data_twitter.json")
-db.insertDB(config.MONGO_DB,"posts","data_facebook.json")
-shutil.rmtree("json/")
+crawling = False
+
+file = open('json/matchNfo.txt', 'r')
+for line in file:
+    if date_jour == line.split(' - ')[4].strip():
+        hashtag = line.split(' - ')[1].strip()
+        date_start_crawling = line.split(' - ')[2].strip()
+        date_stop_crawling = line.split(' - ')[3].strip()
+        crawling = True
+        break
+file.close()
+
+#crawl automatique:
+if crawling:
+    processCrawlers.cronCrawlers(hashtag, date_start_crawling, date_stop_crawling)
+
+#craw manuel:
+crawl_manuel : False #if turn False after each use
+if crawl_manuel:
+    hashtag_match = "" # format #SMC/sloganAutreEquipe
+    date_start_crawling = "" #format YYYY:MM:DD hh:mm:ss
+    date_stop_crawling = "" #format YYYY:MM:DD hh:mm:ss
+    processCrawlers.cronCrawlers(hashtag, date_start_crawling, date_stop_crawling)
+
+
+#TEST LENA
+# database = db.connect(config.MONGO_DB)
+
+# db.insertDB(database,"tweets","data_twitter.json")
+# db.insertDB(database,"posts","data_facebook.json")
+# posts = db.findAll(database["posts"])
+# posts = db.find(database["tweets"] , { "text": "RT @SMCaen: Une minute d\'applaudissement est respectée en l\'hommage d\'un supporter décédé, RIP \"Bentek\"! #SMCTFC #SMCaen #TeamSMC #Ligue1" } , {"text":1} )
+# posts = db.find(database["tweets"] , {} , {"text":1} )
+# for post in posts:
+#     print(post)
+# db.deleteData(database["tweets"])
+# db.deleteData(database["posts"])
+
+# data = urllib.parse.urlencode({ "text": post[0] })
+# u = urllib.request.urlopen("http://text-processing.com/api/sentiment/", data.encode('ascii'))
+# the_page = u.read()
+# print (the_page)
