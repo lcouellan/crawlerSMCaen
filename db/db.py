@@ -13,8 +13,4 @@ def insertDB(database,collection,filename):
     with open("json/"+filename) as f:
         for line in f:
             data.append(json.loads(line))
-<<<<<<< Updated upstream
     col.insert(data)
-=======
-    col.insert(data)
->>>>>>> Stashed changes
