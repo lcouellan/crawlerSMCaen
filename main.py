@@ -6,6 +6,10 @@ import processCrawlers
 import sys
 sys.path.insert(0, 'crawlers')
 sys.path.insert(0, 'parsers')
+sys.path.insert(0, 'db')
+import db
+sys.path.insert(0, 'config')
+import config
 import parser
 import crawlerMatchNfo
 import urllib
@@ -39,7 +43,7 @@ if crawl_manuel:
 
 
 #ajoutBdd (test):
-add_bd_manuel = True #if turn False after each use
+add_bd_manuel = False #if turn False after each use
 if add_bd_manuel:
     database = db.connect(config.MONGO_DB) #connection à la bdd
     #fonction insertion
