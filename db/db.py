@@ -33,3 +33,6 @@ def findAll(collection):
 
 def deleteData(collection):
 	collection.delete_many({})
+
+def countCollection(collection):
+	return collection.count()
