@@ -5,6 +5,8 @@ import time
 import processCrawlers
 import sys
 sys.path.insert(0, 'crawlers')
+sys.path.insert(0, 'parsers')
+import parser
 import crawlerMatchNfo
 import urllib
 
@@ -27,8 +29,8 @@ file.close()
 if crawling:
     processCrawlers.cronCrawlers(hashtag, date_start_crawling, date_stop_crawling)
 
-#craw manuel:
-crawl_manuel : False #if turn False after each use
+#craw manuel (test):
+crawl_manuel = False #if turn False after each use
 if crawl_manuel:
     hashtag_match = "" # format #SMC/sloganAutreEquipe
     date_start_crawling = "" #format YYYY:MM:DD hh:mm:ss
@@ -36,20 +38,16 @@ if crawl_manuel:
     processCrawlers.cronCrawlers(hashtag, date_start_crawling, date_stop_crawling)
 
 
-#TEST LENA
-# database = db.connect(config.MONGO_DB)
-
-# db.insertDB(database,"tweets","data_twitter.json")
-# db.insertDB(database,"posts","data_facebook.json")
-# posts = db.findAll(database["posts"])
-# posts = db.find(database["tweets"] , { "text": "RT @SMCaen: Une minute d\'applaudissement est respectée en l\'hommage d\'un supporter décédé, RIP \"Bentek\"! #SMCTFC #SMCaen #TeamSMC #Ligue1" } , {"text":1} )
-# posts = db.find(database["tweets"] , {} , {"text":1} )
-# for post in posts:
-#     print(post)
-# db.deleteData(database["tweets"])
-# db.deleteData(database["posts"])
-
-# data = urllib.parse.urlencode({ "text": post[0] })
-# u = urllib.request.urlopen("http://text-processing.com/api/sentiment/", data.encode('ascii'))
-# the_page = u.read()
-# print (the_page)
+#ajoutBdd (test):
+add_bd_manuel = True #if turn False after each use
+if add_bd_manuel:
+    database = db.connect(config.MONGO_DB) #connection à la bdd
+    #fonction insertion
+    db.insertDB(database,"tweets","data_twitter.json")
+    #fonction reccupérer toute les data d'une collection
+    posts = db.findAll(database["posts"])
+    #fonction reccupérer selon critères
+    posts = db.find(database["tweets"] , { "text": "RT @SMCaen: Une minute d\'applaudissement est respectée en l\'hommage d\'un supporter décédé, RIP \"Bentek\"! #SMCTFC #SMCaen #TeamSMC #Ligue1" } , {"text":1} )
+    parser.parse(database["tweets"])
+    #fonction de supression
+    db.deleteData(database["tweets"])
