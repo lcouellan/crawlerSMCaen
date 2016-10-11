@@ -14,24 +14,70 @@ import time
 import os
 
 def cronCrawlers(hashtag, date_start_crawling, date_stop_crawling):
-    print("crawling twitter #SMCaen")
-    crawlerTwitter.crawlTweets('#SMCaen', date_start_crawling, date_stop_crawling, 'data_twitter.json')
-    if (os.stat("json/data_twitter.json").st_size != 0):
-        print("adding twitter #SMCaen in MongoDb")
-        db.insertDB(config.MONGO_DB,"tweets","data_twitter.json")
-    else:
-        print("no data from twitter in this period")
-
-    print("crawling twitter " + hashtag)
-    crawlerTwitter.crawlTweets(hashtag, date_start_crawling, date_stop_crawling, 'data_twitter.json')
-    if (os.stat("json/data_twitter.json").st_size != 0):
-        print("adding twitter " + hashtag + " in MongoDb")
-        db.insertDB(config.MONGO_DB,"tweets","data_twitter.json")
-    else:
-        print("no data from twitter in this period")
+    database = db.connect(config.MONGO_DB)
+    print("crawler started,")
+    cronCrawlerTwitter(hashtag, date_start_crawling, database)
     
     print("crawling post SMCaen.officiel")
     crawlerFacebook.crawlFacebook('SMCaen.officiel', date_start_crawling, date_stop_crawling, 'data_facebook.json')
     print("adding post SMCaen.officiel in MongoDb")
-    db.insertDB(config.MONGO_DB,"posts","data_facebook.json")
-    print("done.")    
+    db.insertDB(database,"posts","data_facebook.json")
+    print("done.")
+
+def cronCrawlerTwitter(hashtag, date_start_crawling, database):
+    #transformation des dates pour correspondre au modèle twitter
+    date = date_start_crawling.split(' ')[0].split(':')
+    date_start_1 = date[0] + "-" + date[1] + "-" + date[2] #n-1
+    date_start_2 = date[0] + "-" + date[1] + "-" + "0" + str(int(date[2])+1) #n
+    date_start_3 = date[0] + "-" + date[1] + "-" + "0" + str(int(date[2])+2) #n+1
+    date_start_4 = date[0] + "-" + date[1] + "-" + "0" + str(int(date[2])+3) #n+1
+
+    #---Crawl du #SMCaen---:
+    print("crawling twitter #SMCaen du " + date_start_1 )
+    crawlerTwitter.crawlTweets('#SMCaen', date_start_1, date_start_2, 'data_twitter.json')
+    if (os.stat("crawlers/tmp/data_twitter.json").st_size != 0):
+        print("adding twitter #SMCaen in MongoDb")
+        db.insertDB(database,"tweets","data_twitter.json")
+    else:
+        print("no data from twitter in this period")
+
+    print("crawling twitter #SMCaen du " + date_start_2 )
+    crawlerTwitter.crawlTweets('#SMCaen', date_start_2, date_start_3, 'data_twitter.json')
+    if (os.stat("crawlers/tmp/data_twitter.json").st_size != 0):
+        print("adding twitter #SMCaen in MongoDb")
+        db.insertDB(database,"tweets","data_twitter.json")
+    else:
+        print("no data from twitter in this period")
+
+    print("crawling twitter #SMCaen du " + date_start_3 )
+    crawlerTwitter.crawlTweets('#SMCaen', date_start_3, date_start_4, 'data_twitter.json')
+    if (os.stat("crawlers/tmp/data_twitter.json").st_size != 0):
+        print("adding twitter #SMCaen in MongoDb")
+        db.insertDB(database,"tweets","data_twitter.json")
+    else:
+        print("no data from twitter in this period")
+
+    #---Crawl du #match---:
+    print("crawling twitter" + hashtag + " du " + date_start_1 )
+    crawlerTwitter.crawlTweets(hashtag, date_start_1, date_start_1, 'data_twitter.json')
+    if (os.stat("crawlers/tmp/data_twitter.json").st_size != 0):
+        print("adding twitter " + hashtag + " in MongoDb")
+        db.insertDB(database,"tweets","data_twitter.json")
+    else:
+        print("no data from twitter in this period")
+
+    print("crawling twitter" + hashtag + " du " + date_start_2 )
+    crawlerTwitter.crawlTweets(hashtag, date_start_2, date_start_2, 'data_twitter.json')
+    if (os.stat("crawlers/tmp/data_twitter.json").st_size != 0):
+        print("adding twitter " + hashtag + " in MongoDb")
+        db.insertDB(database,"tweets","data_twitter.json")
+    else:
+        print("no data from twitter in this period")
+
+    print("crawling twitter" + hashtag + " du " + date_start_3 )
+    crawlerTwitter.crawlTweets(hashtag, date_start_3, date_start_3, 'data_twitter.json')
+    if (os.stat("crawlers/tmp/data_twitter.json").st_size != 0):
+        print("adding twitter " + hashtag + " in MongoDb")
+        db.insertDB(database,"tweets","data_twitter.json")
+    else:
+        print("no data from twitter in this period")

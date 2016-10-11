@@ -150,6 +150,6 @@ def crawlMatchDate(filename):
                 line_to_write += date_match + " - " + hashtag + " - " + date_start_crawling + " - " + date_stop_crawling + " - " + date_start_cron + "\n"
 
     #on stock le tout dans un fichier:
-    fptr = open('json/'+filename, "w")
+    fptr = open('crawlers/tmp/'+filename, "w")
     fptr.write(line_to_write)
     fptr.close()

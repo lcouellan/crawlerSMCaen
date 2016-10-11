@@ -17,15 +17,16 @@ def crawlFacebook(page_id,start_parsing_date,end_parsing_date,filename):
     query = "{message, comments.limit(1500){message.limit(1500), reactions.limit(1500)}, reactions.limit(1500)}"
 
     page = graph.get_object(id=page_id, fields='posts.since(' + start_parsing_date + ').until(' + end_parsing_date + ')' + query)
-    
-    #on supprime les pagers (useless on réccupère toute la data)
-    del page["posts"]["paging"]
-    for comments in page["posts"]["data"]:
-        del comments["comments"]["paging"]
-        del comments["reactions"]["paging"]
-            
-    #print(page)
+               
     jsonParse = json.dumps(page) + "\n"
+    fptr = open('crawlers/tmp/'+filename, "w")
+    fptr.write(jsonParse)
+    fptr.close()
+
+    #archivage:
+    date = start_parsing_date.split(' ')[0].split(':')
+    dateD = date[0] + "-" + date[1] + "-" + date[2]
+    filename = dateD  + "_crawlPosts_" + page_id + ".json"
     fptr = open('json/'+filename, "w")
     fptr.write(jsonParse)
     fptr.close()

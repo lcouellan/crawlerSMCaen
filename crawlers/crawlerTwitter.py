@@ -7,6 +7,7 @@ import json
 import sys
 sys.path.insert(0, 'config')
 import config
+import re
 
 
 def crawlTweets(hashtag,dateD,dateF,filename):
@@ -17,6 +18,14 @@ def crawlTweets(hashtag,dateD,dateF,filename):
 	jsonParse = ""
 	for tweet in tweets:
 		jsonParse = jsonParse +  json.dumps(tweet) + "\n"
+	fptr = open('crawlers/tmp/'+filename, "w")
+	fptr.write(jsonParse)
+	fptr.close()
+
+	#archivage:
+	if re.search('/', hashtag):
+		hashtag = hashtag.split('/')[0] + "-" + hashtag.split('/')[1]
+	filename = dateD  + "_crawl_" + hashtag + ".json"
 	fptr = open('json/'+filename, "w")
 	fptr.write(jsonParse)
 	fptr.close()
