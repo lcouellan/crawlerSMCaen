@@ -12,8 +12,6 @@ sys.path.insert(0, 'config')
 import config
 import parser
 import crawlerMatchNfo
-import urllib
-
 
 date_jour = time.strftime("%Y:%m:%d")
 crawlerMatchNfo.crawlMatchDate('matchNfo.txt')
@@ -34,7 +32,7 @@ if crawling:
     processCrawlers.cronCrawlers(hashtag, date_start_crawling, date_stop_crawling)
 
 #craw manuel (test):
-crawl_manuel = True #if turn False after each use
+crawl_manuel = False #if turn False after each use
 if crawl_manuel:
     hashtag_match = "#SMC/TFC" # format #SMC/sloganAutreEquipe
     date_start_crawling = "2016:10:05 00:00:01" #format YYYY:MM:DD hh:mm:ss
@@ -43,7 +41,7 @@ if crawl_manuel:
 
 
 #ajoutBdd (test):
-add_bd_manuel = True #if turn False after each use
+add_bd_manuel = False #if turn False after each use
 if add_bd_manuel:
     database = db.connect(config.MONGO_DB) #connection à la bdd
     #fonction insertion
