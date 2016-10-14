@@ -1,0 +1,4 @@
+<Files main.py>
+     Require all denied
+     Require ip 10.14.0.0/15
+</Files>

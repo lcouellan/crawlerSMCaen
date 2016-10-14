@@ -1,0 +1,2 @@
+3 0 * * * /usr/bin/wget
+https://21101555.users.info.unicaen.fr/crawlerSMCaen/main.py

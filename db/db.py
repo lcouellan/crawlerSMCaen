@@ -13,7 +13,7 @@ def insertDB(db,collection,filename):
 
     col = db[collection]
     data = []
-    with open("json/"+filename) as f:
+    with open("crawlers/tmp/"+filename) as f:
         for line in f:
             data.append(json.loads(line))
     col.insert(data)
