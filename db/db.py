@@ -13,7 +13,7 @@ def insertDB(db,collection,filename):
 
     col = db[collection]
     data = []
-    with open("crawlers/tmp/"+filename) as f:
+    with open("json/"+filename) as f:
         for line in f:
             data.append(json.loads(line))
     col.insert(data)
@@ -22,7 +22,7 @@ def insertDB(db,collection,filename):
 def find(collection, query , colAffichees):
 	posts = []
 	for post in collection.find( query , colAffichees ):
-		posts.append(str(post["text"]))
+		posts.append(post)
 	return posts
 
 def findAll(collection):
