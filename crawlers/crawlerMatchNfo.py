@@ -53,6 +53,52 @@ def sigle(x): #retourne le sigle d'une équipe
         'AS Nancy': "ASNL"
     }[x]
 
+def monthCheck(month):
+    return{
+        1: 31, #2017
+        2: 28,
+        3: 31,
+        4: 30,
+        5: 31,
+        6: 30,
+        7: 31,
+        8: 31,
+        9: 30,
+        10: 31, #2016
+        11: 30,
+        12: 31,
+    }[month]
+
+def strDayOrMonth(i):
+    if i < 10:
+        return "0" + str(i)
+    else:
+        return str(i)
+
+def daysUp(day, month, i):
+    if month != "12":
+        if day < monthCheck(int(month))+1 - i:
+            return month + ":" + strDayOrMonth(day + i)
+        else:
+            return strDayOrMonth(int(month) + 1) + ":" + strDayOrMonth(day + i - monthCheck(int(month)))
+    else:
+        if day < monthCheck(int(month))+1 - i:
+            return month + ":" + strDayOrMonth(day + i)
+        else:
+            return "01" + ":" + strDayOrMonth(day + i - monthCheck(1))
+
+def daysDown(day, month):
+    if month != "01":
+        if day > 1:
+            return month + ":" + strDayOrMonth(day - 1)
+        else:
+            return strDayOrMonth(int(month) - 1) + ":" + strDayOrMonth(monthCheck(int(month) - 1))
+    else:
+        if day > 1:
+            return month + ":" + strDayOrMonth(day - 1)
+        else:
+            return "12:" + strDayOrMonth(monthCheck(12))
+
 def crawlMatchDate(filename):
     #on reccup la page complète:
     fp = urllib.request.urlopen("http://www.smcaen.fr/calendrier-resultat/2016-2017/premiere/complet")
@@ -138,14 +184,11 @@ def crawlMatchDate(filename):
                 day = cleanhtml(month[key][key2][4]).strip()
                 interieur = sigle(cleanhtml(month[key][key2][12]).strip())
                 exterieur = sigle(cleanhtml(month[key][key2][19]).strip())
-                if interieur == "SMC":
-                    hashtag = "#" + interieur + "/" + exterieur
-                else:
-                    hashtag = "#" + exterieur + "/" + interieur
+                hashtag = "#" + interieur + "/" + exterieur
                 date_match = year + ":" + real_month + ":" + day
-                date_start_crawling = year + ":" + real_month + ":" + str(int(day) - 1) + " 04:00:00"
-                date_stop_crawling = year + ":" + real_month + ":" + str(int(day) + 1) + " 23:59:59"
-                date_start_cron = year + ":" + real_month + ":" + str(int(day) + 2)
+                date_start_crawling = year + ":" + daysDown(int(day), real_month) + " 04:00:00"
+                date_stop_crawling = year + ":" + daysUp(int(day), real_month, 1) + " 23:59:59"
+                date_start_cron = year + ":" + daysUp(int(day), real_month, 2)
                 
                 line_to_write += date_match + " - " + hashtag + " - " + date_start_crawling + " - " + date_stop_crawling + " - " + date_start_cron + "\n"
 

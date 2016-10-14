@@ -1,0 +1,17 @@
+------------------------
+crawler started le 10/14/16 20:27:37
+crawling twitter #SMCaen du 2016-10-05
+adding twitter #SMCaen in MongoDb
+crawling twitter #SMCaen du 2016-10-06
+adding twitter #SMCaen in MongoDb
+crawling twitter #SMCaen du 2016-10-07
+adding twitter #SMCaen in MongoDb
+crawling twitter #SMCaen du 2016-10-05
+no data from twitter in this period
+crawling twitter #SMCaen du 2016-10-06
+no data from twitter in this period
+crawling twitter #SMCaen du 2016-10-07
+no data from twitter in this period
+crawling post SMCaen.officiel
+adding post SMCaen.officiel in MongoDb
+Finishing crawling at 10/14/16 20:27:43
