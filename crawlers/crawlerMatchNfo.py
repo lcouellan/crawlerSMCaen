@@ -184,7 +184,7 @@ def crawlMatchDate(filename):
                 day = cleanhtml(month[key][key2][4]).strip()
                 interieur = sigle(cleanhtml(month[key][key2][12]).strip())
                 exterieur = sigle(cleanhtml(month[key][key2][19]).strip())
-                hashtag = "#" + interieur + "/" + exterieur
+                hashtag = "#" + interieur + "" + exterieur
                 date_match = year + ":" + real_month + ":" + day
                 date_start_crawling = year + ":" + daysDown(int(day), real_month) + " 04:00:00"
                 date_stop_crawling = year + ":" + daysUp(int(day), real_month, 1) + " 23:59:59"
