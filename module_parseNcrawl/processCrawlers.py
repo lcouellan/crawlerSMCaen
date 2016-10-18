@@ -29,6 +29,7 @@ def cronCrawlerTwitter(hashtag, date_start_crawling, database, log):
         print("adding twitter #SMCaen in MongoDb")
         log.write("\nadding twitter #SMCaen in MongoDb")
         db.insertDB(database,"tweets","data_twitter.json")
+        db.insertDB(database,"tweets_tmp","data_twitter.json")
     else:
         print("no data from twitter in this period")
         log.write("\nno data from twitter in this period")
@@ -40,6 +41,7 @@ def cronCrawlerTwitter(hashtag, date_start_crawling, database, log):
         print("adding twitter #SMCaen in MongoDb")
         log.write("\nadding twitter #SMCaen in MongoDb")
         db.insertDB(database,"tweets","data_twitter.json")
+        db.insertDB(database,"tweets_tmp","data_twitter.json")
     else:
         print("no data from twitter in this period")
         log.write("\nno data from twitter in this period")
@@ -51,6 +53,7 @@ def cronCrawlerTwitter(hashtag, date_start_crawling, database, log):
         print("adding twitter #SMCaen in MongoDb")
         log.write("\nadding twitter #SMCaen in MongoDb")
         db.insertDB(database,"tweets","data_twitter.json")
+        db.insertDB(database,"tweets_tmp","data_twitter.json")
     else:
         print("no data from twitter in this period")
         log.write("\nno data from twitter in this period")
@@ -63,6 +66,7 @@ def cronCrawlerTwitter(hashtag, date_start_crawling, database, log):
         print("adding twitter " + hashtag + " in MongoDb")
         log.write("\nadding twitter " + hashtag + " in MongoDb")
         db.insertDB(database,"tweets","data_twitter.json")
+        db.insertDB(database,"tweets_tmp","data_twitter.json")
     else:
         print("no data from twitter in this period")
         log.write("\nno data from twitter in this period")
@@ -83,6 +87,7 @@ def cronCrawlers(hashtag, date_start_crawling, date_stop_crawling):
     print("adding post SMCaen.officiel in MongoDb")
     log.write("\nadding post SMCaen.officiel in MongoDb")
     db.insertDB(database,"posts","data_facebook.json")
+    db.insertDB(database,"posts_tmp","data_facebook.json")
     print("done.")
     date_jour = time.strftime("%x %X")
     log.write("\nFinishing crawling at " + date_jour + "\n")
