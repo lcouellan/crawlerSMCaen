@@ -30,6 +30,13 @@ def findAll(collection):
 	for post in collection.find():
 		posts.append(post)
 	return posts
+	
+def findTweets(collection):
+	posts = []
+	for post in collection.find({} ,{"_id":1,"text":1} ):
+		posts.append(post)
+	return posts
+
 
 def deleteData(collection):
 	collection.delete_many({})

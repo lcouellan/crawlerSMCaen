@@ -86,3 +86,31 @@ adding twitter #MHSCSMC in MongoDb
 crawling post SMCaen.officiel
 adding post SMCaen.officiel in MongoDb
 Finishing crawling at 10/18/16 14:06:19
+
+------------------------
+crawler started le 10/18/16 14:37:06
+crawling twitter #SMCaen du 2016-10-14
+adding twitter #SMCaen in MongoDb
+crawling twitter #SMCaen du 2016-10-015
+adding twitter #SMCaen in MongoDb
+crawling twitter #SMCaen du 2016-10-016
+adding twitter #SMCaen in MongoDb
+crawling twitter#MHSCSMC du 2016-10-015
+adding twitter #MHSCSMC in MongoDb
+crawling post SMCaen.officiel
+adding post SMCaen.officiel in MongoDb
+Finishing crawling at 10/18/16 14:37:12
+
+------------------------
+crawler started le 10/18/16 15:03:35
+crawling twitter #SMCaen du 2016-10-14
+adding twitter #SMCaen in MongoDb
+crawling twitter #SMCaen du 2016-10-015
+adding twitter #SMCaen in MongoDb
+crawling twitter #SMCaen du 2016-10-016
+adding twitter #SMCaen in MongoDb
+crawling twitter#MHSCSMC du 2016-10-015
+adding twitter #MHSCSMC in MongoDb
+crawling post SMCaen.officiel
+adding post SMCaen.officiel in MongoDb
+Finishing crawling at 10/18/16 15:03:40

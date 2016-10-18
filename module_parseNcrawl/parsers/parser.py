@@ -7,20 +7,19 @@ import db
 import urllib.request
 import json
 
-def parse(database):
-	posts = db.find(database , {} ,{"_id":1,"text":1})
-	jsonParse = ""
+def parseTweets(tweets,filename):
 	#parsing
-	for post in posts:
-		data = urllib.parse.urlencode({ "text": post })
+	jsonParse = ""
+	for tweet in tweets:
+		data = urllib.parse.urlencode({ "text": tweet })
 		url = urllib.request.urlopen("http://text-processing.com/api/sentiment/", data.encode('ascii'))
 		page = url.read().decode()
 		str1 = page
 		list1 = list(str1)
-		id = ', "idTweet": "'+ str(post["_id"]) +'"}'
+		id = ', "idTweet": "'+ str(tweet["_id"]) +'"}'
 		list1[-1:] = id
 		str1 = ''.join(list1)
 		jsonParse += str1 + "\n"
-		fptr = open("parsers/tmp/tmp2.json", "w")
+		fptr = open("parsers/tmp/"+filename, "w")
 		fptr.write(jsonParse)
 		fptr.close()

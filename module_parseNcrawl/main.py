@@ -41,7 +41,7 @@ if crawl_manuel:
 
 
 #ajoutBdd (test):
-add_bd_manuel = False #if turn False after each use
+add_bd_manuel = True #if turn False after each use
 if add_bd_manuel:
     database = db.connect(config.MONGO_DB) #connection à la bdd
     #fonction insertion
@@ -52,5 +52,7 @@ if add_bd_manuel:
     # posts = db.find(database["tweets"] , { "text": "RT @SMCaen: Une minute d\'applaudissement est respectée en l\'hommage d\'un supporter décédé, RIP \"Bentek\"! #SMCTFC #SMCaen #TeamSMC #Ligue1" } , {"text":1} )
     # parser.parse(database["tweets"])
     #fonction de supression
-    db.deleteData(database["tweets"])
-    db.deleteData(database["posts"])
+    #db.deleteData(database["tweets"])
+    #db.deleteData(database["posts"])
+    tweets = db.findTweets(database["tweets"])
+    parser.parseTweets(tweets,"test.json")
