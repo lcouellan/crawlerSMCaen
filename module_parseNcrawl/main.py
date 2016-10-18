@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 # -*-coding:utf-8 -*
-
+from bson.objectid import ObjectId  
 import time
 import processCrawlers
+import processParsers
 import sys
 sys.path.insert(0, 'crawlers')
 sys.path.insert(0, 'parsers')
@@ -30,6 +31,7 @@ file.close()
 #crawl automatique:
 if crawling:
     processCrawlers.cronCrawlers(hashtag, date_start_crawling, date_stop_crawling)
+    processParsers.cronParsers()
 
 #craw manuel (test):
 crawl_manuel = False #if turn False after each use
@@ -41,7 +43,7 @@ if crawl_manuel:
 
 
 #ajoutBdd (test):
-add_bd_manuel = True #if turn False after each use
+add_bd_manuel = False #if turn False after each use
 if add_bd_manuel:
     database = db.connect(config.MONGO_DB) #connection à la bdd
     #fonction insertion
@@ -54,5 +56,14 @@ if add_bd_manuel:
     #fonction de supression
     #db.deleteData(database["tweets"])
     #db.deleteData(database["posts"])
-    tweets = db.findTweets(database["tweets"])
-    parser.parseTweets(tweets,"test.json")
+    #Parsing des tweets à partir de Mongo
+    # tweets = db.findTweets(database["tweets"])
+    # parser.parseTweets(tweets,"test.json")
+    #Affichage des posts (id / messages) à partir de Mongo
+    # posts = db.findPosts(database["posts"])
+    # print(posts)
+    # Compte le nombre de posts 
+    # print(db.countCollection(database["posts"]))
+    # Compte le nombre de réactions pour un post
+    #print(db.countReactionPosts(database["posts"], "237927042913045_1184610918244648", "test"))
+    #print(db.find(database["tweets"] , { '_id': ObjectId("58061dac6d3a165bf1c1fbb6") } , { "_id":1 , "text":1 } ))

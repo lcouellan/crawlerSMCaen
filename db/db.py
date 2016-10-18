@@ -21,7 +21,7 @@ def insertDB(db,collection,filename):
 
 def find(collection, query , colAffichees):
 	posts = []
-	for post in collection.find( query , colAffichees ):
+	for post in collection.find( query ):
 		posts.append(post)
 	return posts
 
@@ -30,10 +30,16 @@ def findAll(collection):
 	for post in collection.find():
 		posts.append(post)
 	return posts
-	
+
 def findTweets(collection):
 	posts = []
-	for post in collection.find({} ,{"_id":1,"text":1} ):
+	for post in collection.find( {} ,{"_id":1,"text":1} ):
+		posts.append(post)
+	return posts
+
+def findPosts(collection):
+	posts = []
+	for post in collection.find( {} ,{"_id":1,"message":1} ):
 		posts.append(post)
 	return posts
 
@@ -43,3 +49,9 @@ def deleteData(collection):
 
 def countCollection(collection):
 	return collection.count()
+
+def countReactionPosts(collection, idPost, type):
+	posts = []
+	for post in collection.find( {} ,{"_id":idPost,"reactions":1} ):
+		posts.append(post)
+	return posts
