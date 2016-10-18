@@ -2,7 +2,7 @@
 # -*-coding:utf-8 -*
 
 import sys
-sys.path.insert(0, 'db')
+sys.path.insert(0, '../db')
 import db
 import urllib.request
 import json

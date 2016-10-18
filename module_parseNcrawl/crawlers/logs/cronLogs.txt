@@ -45,3 +45,44 @@ no data from twitter in this period
 crawling post SMCaen.officiel
 adding post SMCaen.officiel in MongoDb
 Finishing crawling at 10/14/16 21:13:13
+
+------------------------
+crawler started le 10/18/16 13:54:57
+crawling twitter #SMCaen du 2016-10-14
+adding twitter #SMCaen in MongoDb
+crawling twitter #SMCaen du 2016-10-015
+adding twitter #SMCaen in MongoDb
+crawling twitter #SMCaen du 2016-10-016
+adding twitter #SMCaen in MongoDb
+crawling twitter #SMCaen du 2016-10-14
+no data from twitter in this period
+crawling twitter #SMCaen du 2016-10-015
+no data from twitter in this period
+crawling twitter #SMCaen du 2016-10-016
+no data from twitter in this period
+crawling post SMCaen.officiel
+adding post SMCaen.officiel in MongoDb
+Finishing crawling at 10/18/16 13:55:04
+
+------------------------
+crawler started le 10/18/16 14:04:28
+crawling twitter #SMCaen du 2016-10-14
+adding twitter #SMCaen in MongoDb
+crawling twitter #SMCaen du 2016-10-015
+adding twitter #SMCaen in MongoDb
+crawling twitter #SMCaen du 2016-10-016
+adding twitter #SMCaen in MongoDb
+crawling twitter #SMCaen du 2016-10-016
+------------------------
+crawler started le 10/18/16 14:06:14
+crawling twitter #SMCaen du 2016-10-14
+adding twitter #SMCaen in MongoDb
+crawling twitter #SMCaen du 2016-10-015
+adding twitter #SMCaen in MongoDb
+crawling twitter #SMCaen du 2016-10-016
+adding twitter #SMCaen in MongoDb
+crawling twitter #SMCaen du 2016-10-016
+adding twitter #MHSCSMC in MongoDb
+crawling post SMCaen.officiel
+adding post SMCaen.officiel in MongoDb
+Finishing crawling at 10/18/16 14:06:19

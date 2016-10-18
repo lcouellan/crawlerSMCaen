@@ -3,8 +3,8 @@
 
 import sys
 sys.path.insert(0, 'crawlers')
-sys.path.insert(0, 'db')
-sys.path.insert(0, 'config')
+sys.path.insert(0, '../db')
+sys.path.insert(0, '../config')
 import config
 import crawlerTwitter
 import crawlerFacebook
@@ -56,31 +56,9 @@ def cronCrawlerTwitter(hashtag, date_start_crawling, database, log):
         log.write("\nno data from twitter in this period")
 
     #---Crawl du #match---:
-    print("crawling twitter" + hashtag + " du " + date_start_1 )
-    log.write("\ncrawling twitter #SMCaen du " + date_start_1)
-    crawlerTwitter.crawlTweets(hashtag, date_start_1, date_start_1, 'data_twitter.json')
-    if (os.stat("crawlers/tmp/data_twitter.json").st_size != 0):
-        print("adding twitter " + hashtag + " in MongoDb")
-        log.write("\nadding twitter " + hashtag + " in MongoDb")
-        db.insertDB(database,"tweets","data_twitter.json")
-    else:
-        print("no data from twitter in this period")
-        log.write("\nno data from twitter in this period")
-
     print("crawling twitter" + hashtag + " du " + date_start_2 )
-    log.write("\ncrawling twitter #SMCaen du " + date_start_2)
-    crawlerTwitter.crawlTweets(hashtag, date_start_2, date_start_2, 'data_twitter.json')
-    if (os.stat("crawlers/tmp/data_twitter.json").st_size != 0):
-        print("adding twitter " + hashtag + " in MongoDb")
-        log.write("\nadding twitter " + hashtag + " in MongoDb")
-        db.insertDB(database,"tweets","data_twitter.json")
-    else:
-        print("no data from twitter in this period")
-        log.write("\nno data from twitter in this period")
-
-    print("crawling twitter" + hashtag + " du " + date_start_3 )
-    log.write("\ncrawling twitter #SMCaen du " + date_start_3)
-    crawlerTwitter.crawlTweets(hashtag, date_start_3, date_start_3, 'data_twitter.json')
+    log.write("\ncrawling twitter" + hashtag + " du " + date_start_2)
+    crawlerTwitter.crawTweetsWithoutDate(hashtag, 'data_twitter.json')
     if (os.stat("crawlers/tmp/data_twitter.json").st_size != 0):
         print("adding twitter " + hashtag + " in MongoDb")
         log.write("\nadding twitter " + hashtag + " in MongoDb")

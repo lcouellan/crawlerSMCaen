@@ -2,7 +2,7 @@
 # -*-coding:utf-8 -*
 
 import sys
-sys.path.insert(0, 'config')
+sys.path.insert(0, '../config')
 import config #app token, not gitable
 import json #json
 import re #regex

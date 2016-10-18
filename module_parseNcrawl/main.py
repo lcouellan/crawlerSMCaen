@@ -6,9 +6,9 @@ import processCrawlers
 import sys
 sys.path.insert(0, 'crawlers')
 sys.path.insert(0, 'parsers')
-sys.path.insert(0, 'db')
+sys.path.insert(0, '../db')
 import db
-sys.path.insert(0, 'config')
+sys.path.insert(0, '../config')
 import config
 import parser
 import crawlerMatchNfo
@@ -34,9 +34,9 @@ if crawling:
 #craw manuel (test):
 crawl_manuel = False #if turn False after each use
 if crawl_manuel:
-    hashtag_match = "#SMC/TFC" # format #SMC/sloganAutreEquipe
-    date_start_crawling = "2016:10:05 00:00:01" #format YYYY:MM:DD hh:mm:ss
-    date_stop_crawling = "2016:10:07 23:59:59" #format YYYY:MM:DD hh:mm:ss
+    hashtag_match = "#MHSCSMC" # format #SMC/sloganAutreEquipe
+    date_start_crawling = "2016:10:14 04:00:00" #format YYYY:MM:DD hh:mm:ss
+    date_stop_crawling = "2016:10:16 23:59:59" #format YYYY:MM:DD hh:mm:ss
     processCrawlers.cronCrawlers(hashtag_match, date_start_crawling, date_stop_crawling)
 
 
