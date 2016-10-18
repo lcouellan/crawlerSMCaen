@@ -1,6 +1,3 @@
 /config/config.py
-/module_parseNcrawl/json/*.json
-/module_parseNcrawl/crawlers/tmp/*
-/module_parseNcrawl/parsers/tmp/*
 *.pyc
 __pycache__/
