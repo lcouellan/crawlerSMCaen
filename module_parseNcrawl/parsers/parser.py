@@ -23,3 +23,20 @@ def parseTweets(tweets,filename):
 		fptr = open("parsers/tmp/"+filename, "w")
 		fptr.write(jsonParse)
 		fptr.close()
+
+def parseComments(comments,filename):
+	#parsing
+	jsonParse = ""
+	for comment in comments:
+		data = urllib.parse.urlencode({ "text": comment })
+		url = urllib.request.urlopen("http://text-processing.com/api/sentiment/", data.encode('ascii'))
+		page = url.read().decode()
+		str1 = page
+		list1 = list(str1)
+		id = ', "idComment": "'+ str(comment["id"]) +'"}'
+		list1[-1:] = id
+		str1 = ''.join(list1)
+		jsonParse += str1 + "\n"
+		fptr = open("parsers/tmp/"+filename, "w")
+		fptr.write(jsonParse)
+		fptr.close()

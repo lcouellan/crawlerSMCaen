@@ -53,11 +53,13 @@ if add_bd_manuel:
     # #fonction reccupérer selon critères
     # posts = db.find(database["tweets"] , { "text": "RT @SMCaen: Une minute d\'applaudissement est respectée en l\'hommage d\'un supporter décédé, RIP \"Bentek\"! #SMCTFC #SMCaen #TeamSMC #Ligue1" } , {"text":1} )
     # parser.parse(database["tweets"])
+    #print(db.find(database["tweets"] , { '_id': ObjectId("58061dac6d3a165bf1c1fbb6") } , { "_id":1 , "text":1 } ))
     #fonction de supression
     #db.deleteData(database["tweets"])
     #db.deleteData(database["posts"])
     #Parsing des tweets à partir de Mongo
-    # tweets = db.findTweets(database["tweets"])
+    #tweets = db.findTweets(database["tweets"])
+    #print(tweets)
     # parser.parseTweets(tweets,"test.json")
     #Affichage des posts (id / messages) à partir de Mongo
     # posts = db.findPosts(database["posts"])
@@ -65,5 +67,12 @@ if add_bd_manuel:
     # Compte le nombre de posts 
     # print(db.countCollection(database["posts"]))
     # Compte le nombre de réactions pour un post
-    #print(db.countReactionPosts(database["posts"], "237927042913045_1184610918244648", "test"))
-    #print(db.find(database["tweets"] , { '_id': ObjectId("58061dac6d3a165bf1c1fbb6") } , { "_id":1 , "text":1 } ))
+    #print(db.countReactionPosts(database["posts"], "237927042913045_1184610918244648", "ANGRY"))
+    # Donne les commentaires pour chaque post
+    #print(db.findComments(database["posts"], "237927042913045_1184610918244648"))
+    # Parsing des commentaires FB d'un post à partir de Mongo
+    #comments = db.findComments(database["posts"], "237927042913045_1184610918244648")
+    #parser.parseComments(comments,"post1.json")
+    # Compte le nombre de likes pour un commentaire
+    # print(db.countLikeComment(database["posts"], "237927042913045_1184610918244648", "1184610918244648_1184977031541370"))
+    

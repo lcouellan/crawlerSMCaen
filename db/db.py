@@ -51,7 +51,23 @@ def countCollection(collection):
 	return collection.count()
 
 def countReactionPosts(collection, idPost, type):
-	posts = []
-	for post in collection.find( {} ,{"_id":idPost,"reactions":1} ):
-		posts.append(post)
-	return posts
+	compteur = 0
+	for post in collection.find( {"id":idPost} ,{"reactions":1} ):
+		for k in post["reactions"]["data"]:
+			if(k["type"] == type):
+				#print (k["type"])
+				compteur+=1
+	return compteur
+
+def findComments(collection, idPost):
+	comments = []
+	for post in collection.find( {"id":idPost} ,{"comments":1} ):
+		for comment in post["comments"]["data"]:
+			comments.append(comment)
+	return comments
+
+def countLikeComment(collection, idPost, idComment):
+	for post in collection.find( {"id":idPost} ,{"comments":1} ):
+		for comment in post["comments"]["data"]:
+			if(comment["id"] == idComment):
+				return comment["like_count"]
