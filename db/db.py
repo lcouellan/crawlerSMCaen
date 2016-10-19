@@ -10,7 +10,6 @@ def connect(database):
 	return db
 
 def insertDB(db,collection,filename):
-
     col = db[collection]
     data = []
     with open("crawlers/tmp/"+filename) as f:
@@ -18,6 +17,13 @@ def insertDB(db,collection,filename):
             data.append(json.loads(line))
     col.insert(data)
 
+def insertParseDB(db,collection,filename):
+	col = db[collection]
+	data = []
+	with open("parsers/tmp/"+filename) as f:
+		for line in f:
+			data.append(json.loads(line))
+	col.insert(data)
 
 def find(collection, query , colAffichees):
 	posts = []

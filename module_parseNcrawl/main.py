@@ -40,6 +40,7 @@ if crawl_manuel:
     date_start_crawling = "2016:10:14 04:00:00" #format YYYY:MM:DD hh:mm:ss
     date_stop_crawling = "2016:10:16 23:59:59" #format YYYY:MM:DD hh:mm:ss
     processCrawlers.cronCrawlers(hashtag_match, date_start_crawling, date_stop_crawling)
+    processParsers.cronParsers()
 
 
 #ajoutBdd (test):
@@ -54,9 +55,6 @@ if add_bd_manuel:
     # posts = db.find(database["tweets"] , { "text": "RT @SMCaen: Une minute d\'applaudissement est respectée en l\'hommage d\'un supporter décédé, RIP \"Bentek\"! #SMCTFC #SMCaen #TeamSMC #Ligue1" } , {"text":1} )
     # parser.parse(database["tweets"])
     #print(db.find(database["tweets"] , { '_id': ObjectId("58061dac6d3a165bf1c1fbb6") } , { "_id":1 , "text":1 } ))
-    #fonction de supression
-    #db.deleteData(database["tweets"])
-    #db.deleteData(database["posts"])
     #Parsing des tweets à partir de Mongo
     #tweets = db.findTweets(database["tweets"])
     #print(tweets)
@@ -76,3 +74,7 @@ if add_bd_manuel:
     # Compte le nombre de likes pour un commentaire
     # print(db.countLikeComment(database["posts"], "237927042913045_1184610918244648", "1184610918244648_1184977031541370"))
     
+
+    #fonction de supression
+    db.deleteData(database["tweets"])
+    db.deleteData(database["posts"])

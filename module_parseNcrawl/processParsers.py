@@ -23,14 +23,15 @@ def cronParsers():
     print("parsing new tweets")
     log.write("\nparsing new tweets")
     tweets = db.findTweets(database["tweets_tmp"])
-    parser.parseTweets(tweets,"test.json") #ligne à remplacer par ajout mongo
+    parser.parseTweets(tweets,"tweets.json") #ligne à remplacer par ajout mongo
+    db.insertParseDB(database,"parseTweets","tweets.json")
     db.deleteData(database["tweets_tmp"])
 
-    # print("parsing new posts")
-    # log.write("\nparsing new posts")
-    #posts = db.findPosts(database["posts_tmp"])
-    #parser.parsePosts(posts,"test.json")
-    #db.deleteData(database["posts_tmp"])
+    print("parsing d'un post")
+    log.write("\nparsing d'un posts")
+    comments = db.findComments(database["posts_tmp"], "237927042913045_1184610918244648")
+    parser.parseComments(comments,"post1.json")
+    db.insertParseDB(database,"parseComments","post1.json")
     
     print("done.")
     date_jour = time.strftime("%x %X")
