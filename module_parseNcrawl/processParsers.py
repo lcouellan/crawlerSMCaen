@@ -29,9 +29,10 @@ def cronParsers():
 
     print("parsing d'un post")
     log.write("\nparsing d'un posts")
-    comments = db.findComments(database["posts_tmp"], "237927042913045_1184610918244648")
-    parser.parseComments(comments,"post1.json")
-    db.insertParseDB(database,"parseComments","post1.json")
+    comments = db.findAllComments(database["posts_tmp"])
+    parser.parseComments(comments,"posts.json")
+    db.insertParseDB(database,"parseComments","posts.json")
+    db.deleteData(database["posts_tmp"])
     
     print("done.")
     date_jour = time.strftime("%x %X")

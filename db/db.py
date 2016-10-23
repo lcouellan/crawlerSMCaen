@@ -72,6 +72,13 @@ def findComments(collection, idPost):
 			comments.append(comment)
 	return comments
 
+def findAllComments(collection):
+	comments = []
+	for post in collection.find( {} ,{"comments":1} ):
+		for comment in post["comments"]["data"]:
+			comments.append(comment)
+	return comments
+
 def countLikeComment(collection, idPost, idComment):
 	for post in collection.find( {"id":idPost} ,{"comments":1} ):
 		for comment in post["comments"]["data"]:

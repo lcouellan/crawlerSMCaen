@@ -70,7 +70,7 @@ else: #manuel launch for testing
 if add_bd_manuel:
     database = db.connect(config.MONGO_DB) #connection à la bdd
     #fonction insertion
-    # db.insertDB(database,"tweets","data_twitter.json")
+    #db.insertDB(database,"posts","data_facebook.json")
     # #fonction reccupérer toute les data d'une collection
     # posts = db.findAll(database["posts"])
     # #fonction reccupérer selon critères
@@ -92,6 +92,9 @@ if add_bd_manuel:
     #print(db.findComments(database["posts"], "237927042913045_1184610918244648"))
     # Parsing des commentaires FB d'un post à partir de Mongo
     #comments = db.findComments(database["posts"], "237927042913045_1184610918244648")
+    #comments1 = db.findComments(database["posts"], "237927042913045_1184610918244648")
+    #comments = db.findAllComments(database["posts"])
+    #print(len(comments1))
     #parser.parseComments(comments,"post1.json")
     # Compte le nombre de likes pour un commentaire
     # print(db.countLikeComment(database["posts"], "237927042913045_1184610918244648", "1184610918244648_1184977031541370"))
