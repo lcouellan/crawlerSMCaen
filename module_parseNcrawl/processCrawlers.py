@@ -74,9 +74,8 @@ def cronCrawlerTwitter(hashtag, date_start_crawling, database, log):
 def cronCrawlers(hashtag, date_start_crawling, date_stop_crawling):
     database = db.connect(config.MONGO_DB)
     log = open('logs/cronLogs.txt','a')
-    log.write("\n------------------------")
+    
     date_jour = time.strftime("%x %X")
-
     print("crawler started le " + date_jour)
     log.write("\ncrawler started le " + date_jour)
     cronCrawlerTwitter(hashtag, date_start_crawling, database, log)

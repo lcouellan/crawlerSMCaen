@@ -37,6 +37,4 @@ def cronParsers():
     date_jour = time.strftime("%x %X")
     log.write("\nFinishing parsing at " + date_jour + "\n")
 
-    log.write("\n--- The task was successfully executed ---\n")
-
     log.close()
