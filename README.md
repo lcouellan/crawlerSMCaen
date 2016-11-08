@@ -30,7 +30,7 @@ crontab -e
 
 ## Important note
 
-The second part of the project (search engine and feelings monitoring) is available:  * [`feelingAnalysisSMCaen`](https://github.com/plabadille/feelingAnalysisSMCaen).
+The second part of the project (search engine and feelings monitoring) is available: [`feelingAnalysisSMCaen`](https://github.com/plabadille/feelingAnalysisSMCaen).
 
 ## Built with
 
