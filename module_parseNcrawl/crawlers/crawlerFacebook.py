@@ -13,7 +13,7 @@ def crawlFacebook(page_id,start_parsing_date,end_parsing_date,filename):
     #1- préparation de la requête
     token_app = config.APP_ID + "|" + config.APP_SECRET_KEY
     api_url = "https://graph.facebook.com/v2.8/"
-    query = "/?fields=posts.since(" + start_parsing_date + ").until(" + end_parsing_date + "){comments.limit(1500){message.limit(1500),like_count},reactions.limit(1500),message}&access_token="
+    query = "/?fields=posts.since(" + start_parsing_date + ").until(" + end_parsing_date + "){comments.limit(1500){message.limit(1500),like_count,created_time},reactions.limit(1500),message,created_time}&access_token="
     fb_graph_url = api_url + page_id + query + token_app
     responseStr = requests.get(fb_graph_url).text
 
