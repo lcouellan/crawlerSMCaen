@@ -98,10 +98,11 @@ if add_bd_manuel:
     #parser.parseComments(comments,"post1.json")
     # Compte le nombre de likes pour un commentaire
     # print(db.countLikeComment(database["posts"], "237927042913045_1184610918244648", "1184610918244648_1184977031541370"))
-    
+    tweets = db.findTweets(database["tweets_tmp"])
+    parser.parseTweets(tweets,"tweets2.json");
     #fonction de supression
-    db.deleteData(database["tweets"])
-    db.deleteData(database["posts"])
+    #db.deleteData(database["tweets"])
+    #db.deleteData(database["posts"])
 
 #log terminated:
 print("The task was successfully executed")

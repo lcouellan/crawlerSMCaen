@@ -1,3 +1,4 @@
+# -*-coding:utf-8 -*
 from pymongo import MongoClient
 import json
 import sys
@@ -39,7 +40,7 @@ def findAll(collection):
 
 def findTweets(collection):
 	posts = []
-	for post in collection.find( {} ,{"_id":1,"text":1} ):
+	for post in collection.find( {} ,{"id_str":1,"text":1} ):
 		posts.append(post)
 	return posts
 

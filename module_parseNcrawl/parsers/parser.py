@@ -16,7 +16,7 @@ def parseTweets(tweets,filename):
 		page = url.read().decode()
 		str1 = page
 		list1 = list(str1)
-		id = ', "idTweet": "'+ str(tweet["_id"]) +'"}'
+		id = ', "idTweet": "'+ str(tweet["id_str"]) +'"}'
 		list1[-1:] = id
 		str1 = ''.join(list1)
 		jsonParse += str1 + "\n"
