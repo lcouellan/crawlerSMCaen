@@ -7,7 +7,7 @@ It's a group project involving Lénaïc Couellan and Pierre Labadille, students 
 
 Clone the repository (localy or in python server)
 ```
-git clone https://github.com/lcouellan/randoweb.git
+git clone https://github.com/lcouellan/crawlerSMCaen.git
 cd crawlerSMCaen
 ```
 
