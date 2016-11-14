@@ -36,6 +36,7 @@ The second part of the project (search engine and feelings monitoring) is availa
 
 * [`Facebook API Graph`](https://developers.facebook.com/docs/graph-api/)
 * [`Twitter API Search`](https://dev.twitter.com/rest/public/search)
+* [`Text Processing Sentiment Analysis`](http://text-processing.com/docs/sentiment.html)
 * [`Python3`](https://www.python.org/download/releases/3.0/)
 * [`MongoDb`](https://www.mongodb.com/fr)
 
